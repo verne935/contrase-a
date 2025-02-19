@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auditoría de Seguridad - Contraseñas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            width: 50%;
+            margin: auto;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+        #resultado {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Auditoría de Seguridad: Verificación de Contraseñas</h2>
+    <p>Ingrese una contraseña para comprobar si cumple con los estándares de seguridad:</p>
+    <input type="password" id="password" placeholder="Escriba su contraseña">
+    <button onclick="auditarPassword()">Verificar</button>
+    <p id="resultado"></p>
+</div>
+
+<script>
+    function auditarPassword() {
+        let password = document.getElementById("password").value;
+        let resultado = document.getElementById("resultado");
+
+        let longitud = password.length >= 8;
+        let mayuscula = /[A-Z]/.test(password);
+        let numero = /[0-9]/.test(password);
+
+        if (longitud && mayuscula && numero) {
+            resultado.style.color = "green";
+            resultado.innerText = "✅ Contraseña segura. Cumple con los estándares de auditoría.";
+        } else {
+            resultado.style.color = "red";
+            resultado.innerText = "❌ Contraseña débil. Debe tener al menos 8 caracteres, una mayúscula y un número.";
+        }
+    }
+</script>
+
+</body>
+</html>
